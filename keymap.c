@@ -21,12 +21,10 @@ enum {
     TD_LSFT_CAPS,
 };
 qk_tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for shift, twice for Caps Lock
     [TD_LSFT_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_LSFT, KC_CAPS),
 };
 
 #define TD_LSFT_CAPS TD(TD_LSFT_CAPS)
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x5_3(
@@ -37,10 +35,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
            KC_Z,  RALT_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,RALT_DOT, KC_SLSH,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-                                LT(_MOUSE, KC_TAB),
+                                LT(_F, KC_TAB),
                                     LT(_ARROWS, KC_ESC),
-                                        LT(_NUMS, KC_SPC),
-                                                                        LT(_F, KC_ENT),
+                                        LT(_NUMS, KC_ENT),
+                                                                        LT(_MOUSE, KC_SPC),
                                                                             KC_BSPC,
                                                                                KC_DEL
                                 //`--------------------------'  `--------------------------'
@@ -48,35 +46,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_ARROWS] = LAYOUT_split_3x5_3(
     //,--------------------------------------------.                    ,--------------------------------------------.
-        KC_UNDO,  KC_CUT, KC_COPY,KC_PASTE, XXXXXXX,                      KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, XXXXXXX,
+        KC_UNDO, KC_CUT, KC_COPY, KC_PASTE, KC_PSCR,                      KC_PSCR, KC_SLCK, KC_PAUS, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,
+        KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_CAPS,                      KC_CAPS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_INS, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,
+        KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,                       KC_INS, XXXXXXX, XXXXXXX, KC_RALT, XXXXXXX,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-                                            _______, _______, _______,    _______, _______, _______
+                                        _______, _______, _______,    _______, _______, _______
                                         //`--------------------------'  `--------------------------'
     ),
 
     [_NUMS] = LAYOUT_split_3x5_3(
     //,--------------------------------------------.                    ,--------------------------------------------.
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MINS,    KC_7,    KC_8,    KC_9,  KC_EQL,
+         KC_EQL,    KC_9,    KC_8,    KC_7, KC_MINS,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_QUOT,                      KC_LBRC,    KC_4,    KC_5,    KC_6, KC_RBRC,
+        KC_LBRC,    KC_6,    KC_5,    KC_4, KC_RBRC,                      XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,                       KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,
+        KC_BSLS,    KC_3,    KC_2,    KC_1,    KC_0,                       KC_GRV, XXXXXXX, XXXXXXX, KC_RALT, KC_QUOT,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-                                            _______, _______, _______,       KC_0, _______, _______
+                                            _______, _______, _______,    _______, _______, _______
                                         //`--------------------------'  `--------------------------'
     ),
 
     [_F] = LAYOUT_split_3x5_3(
     //,--------------------------------------------.                    ,--------------------------------------------.
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,   KC_F7,   KC_F8,   KC_F9, KC_F12,
+         KC_F12,   KC_F9,   KC_F8,   KC_F7, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      XXXXXXX,   KC_F4,   KC_F5,   KC_F6, KC_F11,
+         KC_F11,   KC_F6,   KC_F5,   KC_F4, XXXXXXX,                      XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-        XXXXXXX, KC_RALT, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX,   KC_F1,   KC_F2,   KC_F3, KC_F10,
+         KC_F10,   KC_F3,   KC_F2,   KC_F1, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, KC_RALT, XXXXXXX,
     //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
                                             _______, _______, _______,    _______, _______, _______
                                         //`--------------------------'  `--------------------------'
@@ -112,6 +110,77 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             // Else, let QMK process the KC_ESC keycode as usual
             return true;
+
+
+        case KC_PASTE:
+            if (record->event.pressed) {
+                    unregister_code(KC_PASTE);
+
+                    register_code(KC_LCTL);
+                    register_code(KC_V);
+
+                    unregister_code(KC_LCTL);
+                    unregister_code(KC_V);
+            } else {
+                unregister_code(KC_PASTE);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_V);
+            }
+            return false;
+
+        case KC_COPY:
+            if (record->event.pressed) {
+                    unregister_code(KC_COPY);
+
+                    register_code(KC_LCTL);
+                    register_code(KC_C);
+
+                    //register_code(KC_COPY);
+                    unregister_code(KC_LCTL);
+                    unregister_code(KC_C);
+            } else {
+                unregister_code(KC_COPY);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_C);
+            }
+            return false;
+
+        case KC_CUT:
+            if (record->event.pressed) {
+                    unregister_code(KC_CUT);
+
+                    register_code(KC_LCTL);
+                    register_code(KC_X);
+
+                    unregister_code(KC_LCTL);
+                    unregister_code(KC_X);
+            } else {
+                unregister_code(KC_CUT);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_X);
+            }
+            return false;
+
+        case KC_UNDO:
+            if (record->event.pressed) {
+                unregister_code(KC_UNDO);
+
+                register_code(KC_LCTL);
+                register_code(KC_Z);
+
+                //register_code(KC_UNDO);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_Z);
+            } else {
+                unregister_code(KC_UNDO);
+                unregister_code(KC_LCTL);
+                unregister_code(KC_Z);
+            }
+            return false;
+
+        default:
+            return true;
+
     }
 
     return true;
